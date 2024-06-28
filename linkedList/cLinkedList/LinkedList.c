@@ -1,40 +1,44 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 
-struct Node
+typedef struct Node
 {
-    char *string;
-    struct Node* nextNode;
-};
+    char string[32];
+    struct Node * next;   
+} Node;
 
-struct LinkedList
+typedef struct LinkedList
 {
-    struct Node* firstNode;
-};
+    Node * head;
+} LinkedList;
 
-void addValueInLinkedList(struct LinkedList* linkedList, char string[]) 
+void addElementInList(LinkedList *linkedList, char string[]) 
 {
-    struct Node newNode = {string, NULL};
-    struct Node* listNode = linkedList->firstNode;
-    while(listNode != NULL)
-    {
-        listNode = listNode->nextNode;
-    }
-    listNode = &newNode;
+    Node * newNode = NULL;
+    newNode = (Node *) malloc(sizeof(Node));
+    strcpy(newNode->string, string);
+    newNode->next = linkedList->head;
+    linkedList->head = newNode;
 }
 
-void iterateLinkedList(struct LinkedList* linkedList)
-{
-    struct Node* node = linkedList->firstNode;
-    while(node != NULL)
-    {
-        printf("%s\n--------\n", node->string);
-        node = node->nextNode;
+void printAllListElements(LinkedList linkedList) {
+    Node * currentNode = linkedList.head;
+    while(currentNode->next != NULL) {
+        printf("%s\n", currentNode->string);
+        currentNode = currentNode->next;
     }
 }
 
-void main()
+void main() 
 {
-    struct Node node1 = {"Nathan", NULL};
-    struct LinkedList linkedList = {&node1};
-    iterateLinkedList(&linkedList);
+    LinkedList linkedList;
+    linkedList.head = NULL;
+    linkedList.head = malloc(sizeof(Node));
+
+    addElementInList(&linkedList, "Nathan");
+    addElementInList(&linkedList, "Marcos");
+    addElementInList(&linkedList, "João");
+    addElementInList(&linkedList, "Luis");
+    printAllListElements(linkedList);
 }
