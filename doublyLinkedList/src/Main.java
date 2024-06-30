@@ -4,6 +4,8 @@ public class Main {
         doublyLinkedList.add("Nathan");
         doublyLinkedList.add("Ash");
         doublyLinkedList.add("Bob");
+        doublyLinkedList.remove();
+        doublyLinkedList.add("Kira");
         doublyLinkedList.add("Steve");
         doublyLinkedList.add("Light Yagami");
 
