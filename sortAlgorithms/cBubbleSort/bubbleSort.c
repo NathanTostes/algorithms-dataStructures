@@ -1,32 +1,36 @@
 #include <stdio.h>
 
+void bubbleSort(int[], int);
+
 void main() {
-    int numbers[] = {42, 69, 11, 2, 88, 91};
-    int i;
-    int j;
-    int aux;
-    printf("-----Initial Array-----\n");
-    for (i = 0; i < 6; i++)
+    int arrayNumber[] = {3, 9, 1, 5, 4, 7, 6, 8, 2};
+    int arrayPositions = 9;
+    printf("---Before Sort---\n");
+    for(int i = 0; i < arrayPositions; i++)
     {
-        printf("%i\n", numbers[i]);
+        printf("%d ", arrayNumber[i]);
     }
     
-    for(i = 0; i < 5; i++) 
-    {
-        for(j = i + 1; j < 6; j++) 
-        {
-            if(numbers[i] > numbers[j]) 
-            {
-                aux = numbers[i];
-                numbers[i] = numbers[j];
-                numbers[j] = aux;
-            }       
-        }
-    }
+    bubbleSort(arrayNumber, arrayPositions);
 
-    printf("-----Sorted Array-----\n");
-    for (i = 0; i < 6; i++)
+    printf("\n---After Sort---\n");
+    for(int i = 0; i < arrayPositions; i++)
     {
-        printf("%i\n", numbers[i]);
+        printf("%d ", arrayNumber[i]);
+    }
+}
+
+void bubbleSort(int arrayNumber[], int arrayPositions) {
+    int swap;
+    for(int i = 0; i < arrayPositions - 1; i++) 
+    {
+        for(int j = 0; j < arrayPositions - i - 1; j++) 
+        {
+            if(arrayNumber[j] > arrayNumber[j + 1]) {
+                swap = arrayNumber[j];
+                arrayNumber[j] = arrayNumber[j + 1];
+                arrayNumber[j + 1] = swap;
+            }
+        }
     }
 }
