@@ -1,4 +1,4 @@
-public class RecusiveBubbleSort {
+public class RecursiveBubbleSort {
 	public static void main(String[] args) {
 		int[] numbers = {3, 7, 9, 1, 4, 2, 8, 6, 5};
 		printArray(numbers);
